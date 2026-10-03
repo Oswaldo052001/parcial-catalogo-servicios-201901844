@@ -209,7 +209,7 @@ Los cuatro ciclos dejaron una lección en `AGENTS.md` v3. El tercero muestra por
 
 | Comando | Fecha | Estado del código | Resultado |
 |---|---|---|---|
-| `npx jest --runInBand --verbose` (Node 22, PostgreSQL 16 local, base `catalogo_test`) | 2026-10-03 | árbol de trabajo antes del primer commit | **48/48 pasan**, 6 suites ([pruebas-local.txt](evidencias/pruebas-local.txt)) |
+| `npx jest --runInBand --json` (Node 22, PostgreSQL 16 local, base `catalogo_test`) | 2026-10-03 | después del ciclo 3 | **48/48 pasan**, 6 suites ([pruebas-local.txt](evidencias/pruebas-local.txt)) |
 | `node scripts/calidad.js` | 2026-10-03 | ídem | 7/7 controles ([calidad-local.txt](evidencias/calidad-local.txt)) |
 | `python3 scripts/analizar_excel.py` | 2026-10-03 | ídem | código 0, 12/46 |
 | `docker compose exec app npm test` en Docker Desktop 4.43.2 (Windows) | 2026-10-03 | después del ciclo 3 | **48/48 pasan** |

@@ -1,7 +1,59 @@
-# Fecha: 2026-10-03T12:00:54-06:00 | Comando: npx jest --runInBand --verbose | Entorno: Node v22.22.0, PostgreSQL 16 local (base catalogo_test) | Estado: árbol de trabajo antes del primer commit
+# Fecha: 2026-10-03T14:26:07-06:00 | Comando: npx jest --runInBand --json | Node 22, PostgreSQL 16 local, base catalogo_test (sin DATABASE_URL_TEST, igual que en el contenedor)
+
+PASSED  tests/integracion/p01-p03-autenticacion.test.js
+  ✓ P01 Inicio de sesión válido e inválido › acepta usuario y contraseña correctos (por nombre de usuario y por correo)
+  ✓ P01 Inicio de sesión válido e inválido › rechaza contraseña incorrecta y usuario inexistente con el mismo mensaje
+  ✓ P01 Inicio de sesión válido e inválido › después de 5 intentos fallidos el login se bloquea temporalmente (429)
+  ✓ P01 Inicio de sesión válido e inválido › la contraseña se guarda con hash scrypt y sal, nunca en texto plano
+  ✓ P02 Acceso sin sesión, cierre de sesión y usuario inactivo › sin sesión: lectura y escritura protegidas devuelven 401
+  ✓ P02 Acceso sin sesión, cierre de sesión y usuario inactivo › después del logout la misma cookie ya no sirve
+  ✓ P02 Acceso sin sesión, cierre de sesión y usuario inactivo › usuario desactivado: no puede iniciar sesión y su sesión abierta deja de funcionar
+  ✓ P03 Usuario de consulta intenta modificar datos › puede leer datos funcionales
+  ✓ P03 Usuario de consulta intenta modificar datos › el servidor rechaza con 403 toda modificación
+  ✓ P03 Usuario de consulta intenta modificar datos › ninguna respuesta de usuarios expone el hash de contraseña
+PASSED  tests/integracion/p04-p05-organizacion.test.js
+  ✓ P04 Crear una jerarquía y asignar un usuario › Empresa → Área → Departamento → Sección → Puesto → Usuario queda relacionado y recuperable
+  ✓ P04 Crear una jerarquía y asignar un usuario › no permite asociar a un padre inactivo ni desactivar en silencio un padre con dependientes
+  ✓ P05 Código duplicado o referencia inexistente › rechaza empresa con código duplicado con mensaje comprensible
+  ✓ P05 Código duplicado o referencia inexistente › el mismo código de área se permite en otra empresa pero no dos veces en la misma
+  ✓ P05 Código duplicado o referencia inexistente › rechaza servicio con código duplicado y referencias inexistentes
+  ✓ P05 Código duplicado o referencia inexistente › rechaza usuario con correo duplicado o puesto inexistente
+PASSED  tests/integracion/p06-p08-importacion.test.js
+  ✓ P06 Importar el archivo original › quedan 12 códigos de nivel 1 y 46 servicios de nivel 2, con incidencias registradas
+  ✓ P06 Importar el archivo original › las celdas combinadas no generan un servicio por fila y conservan su rango de origen
+  ✓ P06 Importar el archivo original › las filas de la lista de opciones alimentan los catálogos y no son servicios
+  ✓ P07 Repetir la importación › no duplica registros, no reporta cambios y deja una nueva traza
+  ✓ P07 Repetir la importación › una reimportación no borra las asignaciones de responsables hechas en la aplicación
+  ✓ P08 Revisar SE.12 y atributos ausentes › SE.12 es un solo registro con nombre canónico y evidencia de ambos nombres
+  ✓ P08 Revisar SE.12 y atributos ausentes › SE.12.1, SE.12.2 y SE.12.3 conservan su código y sus ausencias sin inventar valores
+  ✓ P08 Revisar SE.12 y atributos ausentes › mínimo y máximo ausentes quedan nulos, nunca cero
+  ✓ P08 Revisar SE.12 y atributos ausentes › la ficha del servicio expone las observaciones de SE.12
+PASSED  tests/integracion/p09-p11-servicios.test.js
+  ✓ P09 Crear o editar servicio con mínimo mayor que máximo › la creación se rechaza y no se guarda
+  ✓ P09 Crear o editar servicio con mínimo mayor que máximo › la edición se rechaza y conserva los valores anteriores
+  ✓ P09 Crear o editar servicio con mínimo mayor que máximo › la base de datos también lo impide (restricción CHECK)
+  ✓ P09 Crear o editar servicio con mínimo mayor que máximo › un umbral vacío se guarda como nulo y mínimo = máximo es válido
+  ✓ P10 Buscar y filtrar servicios › búsqueda por código y por nombre
+  ✓ P10 Buscar y filtrar servicios › filtros por nivel 1, estado, clase, criticidad y tipo son coherentes
+  ✓ P10 Buscar y filtrar servicios › paginación sin repetir ni perder registros
+  ✓ P11 Asignar responsable de una sección distinta › rechaza un usuario que no pertenece a la sección responsable
+  ✓ P11 Asignar responsable de una sección distinta › acepta un usuario de la misma sección y el trigger protege la base
+  ✓ P11 Asignar responsable de una sección distinta › no se puede mover a otra sección a un usuario o puesto que es responsable (API y base de datos)
+  ✓ P11 Asignar responsable de una sección distinta › rechaza asignar a una sección inactiva
+  ✓ P11 Asignar responsable de una sección distinta › los datos de demostración incluyen al menos tres asignaciones válidas
+PASSED  tests/integracion/p12-persistencia.test.js
+  ✓ P12 Persistencia de datos › un registro creado sigue existiendo después de cerrar y reabrir el pool de conexiones
+PASSED  tests/unit/unidades.test.js
+  ✓ Unidad: normalización de códigos › SE.12.1 -> SE.12.01
+  ✓ Unidad: normalización de códigos › SE.01.02 -> SE.01.02
+  ✓ Unidad: normalización de códigos › SE.1 -> SE.01
+  ✓ Unidad: normalización de códigos › SE.06 -> SE.06
+  ✓ Unidad: normalización de códigos › prefijo de nivel 1
+  ✓ Unidad: contraseñas › mismo texto produce hashes distintos (sal) y ambos verifican
+  ✓ Unidad: contraseñas › rechaza contraseñas cortas
+  ✓ Unidad: análisis del Excel sin base de datos › 12 nivel 1, 46 nivel 2, filas 42 y 67 omitidas, opciones fuera de la zona de datos
+  ✓ Unidad: análisis del Excel sin base de datos › el texto con apariencia de instrucción en I5 se trata como dato
+  ✓ Unidad: análisis del Excel sin base de datos › ningún bloque de nivel 2 presenta conflicto de atributos en el archivo original
+
 Test Suites: 6 passed, 6 total
-Tests:       48 passed, 48 total
-Snapshots:   0 total
-Time:        5.013 s
-Ran all test suites.
-exit=0
+Tests:       48 passed, 0 failed, 48 total
