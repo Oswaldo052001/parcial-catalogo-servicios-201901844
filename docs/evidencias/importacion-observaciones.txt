@@ -1,0 +1,15 @@
+         tipo          |  severidad  | fila |   rango   |  codigo  |                                                                                                mensaje                                                                                                 
+-----------------------+-------------+------+-----------+----------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ ESPACIOS_RECORTADOS   | INFO        |    5 | I5        | SE.01.01 | Se recortaron espacios al inicio o final de I5; el texto original queda en la traza.
+ FILA_SIN_CODIGO       | ADVERTENCIA |   42 | A42:L42   | SE.06    | La fila 42 tiene datos (A, B, E, F, G, H) pero no tiene código de nivel 2 ni está dentro de un rango combinado de la columna C. Se omite y no se asigna a ningún servicio.
+ FILA_SIN_CODIGO       | ADVERTENCIA |   67 | A67:L67   | SE.09    | La fila 67 tiene datos (A, B, E, F, G, H) pero no tiene código de nivel 2 ni está dentro de un rango combinado de la columna C. Se omite y no se asigna a ningún servicio.
+ CONFLICTO_NOMBRE_N1   | ADVERTENCIA |   99 | A99:B100  | SE.12    | El código SE.12 aparece con 2 nombres distintos ("Suministrar Analitica", "Mantener Tableros de Control"). Se usa "Suministrar Analitica" como nombre canónico y se conservan ambos en nombres_origen.
+ CODIGO_NORMALIZADO    | INFO        |   99 | C99       | SE.12.1  | El código SE.12.1 no sigue el formato SE.NN.NN. Se conserva como texto y se guarda SE.12.01 en codigo_normalizado para ordenar.
+ ATRIBUTOS_INCOMPLETOS | ADVERTENCIA |   99 | C99:L99   | SE.12.1  | SE.12.1 no trae ACTIVO, CLASE DE SERVICIO, CRITICIDAD, TIPO DE SERVICIO, Métrica. Se importa con esos campos sin dato (activo=DESCONOCIDO) y marcado para revisión.
+ CODIGO_NORMALIZADO    | INFO        |  100 | C100      | SE.12.2  | El código SE.12.2 no sigue el formato SE.NN.NN. Se conserva como texto y se guarda SE.12.02 en codigo_normalizado para ordenar.
+ ATRIBUTOS_INCOMPLETOS | ADVERTENCIA |  100 | C100:L100 | SE.12.2  | SE.12.2 no trae ACTIVO, CLASE DE SERVICIO, CRITICIDAD, TIPO DE SERVICIO, Métrica. Se importa con esos campos sin dato (activo=DESCONOCIDO) y marcado para revisión.
+ N1_POR_PREFIJO        | ADVERTENCIA |  101 | A101      | SE.12.3  | La fila 101 (SE.12.3) no tiene código de nivel 1 en la columna A ni pertenece a un rango combinado; se vincula a SE.12 por el prefijo de su código.
+ CODIGO_NORMALIZADO    | INFO        |  101 | C101      | SE.12.3  | El código SE.12.3 no sigue el formato SE.NN.NN. Se conserva como texto y se guarda SE.12.03 en codigo_normalizado para ordenar.
+ ATRIBUTOS_INCOMPLETOS | ADVERTENCIA |  101 | C101:L101 | SE.12.3  | SE.12.3 no trae ACTIVO, CLASE DE SERVICIO, CRITICIDAD, TIPO DE SERVICIO, Métrica. Se importa con esos campos sin dato (activo=DESCONOCIDO) y marcado para revisión.
+(11 rows)
+

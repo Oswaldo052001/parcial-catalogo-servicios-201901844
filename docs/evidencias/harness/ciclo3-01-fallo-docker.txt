@@ -1,0 +1,21 @@
+# 2026-10-03 — docker compose exec app npm test (Docker Desktop 4.43.2, Windows, primera ejecución dentro del contenedor)
+# Extracto de la salida real (se omiten las trazas repetidas de cada error).
+
+ FAIL  tests/integracion/p09-p11-servicios.test.js
+    [error] error: database "catalogo_test_test" does not exist
+  ● P09 Crear o editar servicio con mínimo mayor que máximo › la creación se rechaza y no se guarda
+    No se pudo iniciar sesión como admin_test: 500 {"error":"Error interno del servidor."}
+ FAIL  tests/integracion/p06-p08-importacion.test.js
+    error: database "catalogo_test_test" does not exist
+ FAIL  tests/integracion/p01-p03-autenticacion.test.js
+ FAIL  tests/integracion/p04-p05-organizacion.test.js
+ FAIL  tests/integracion/p12-persistencia.test.js
+ PASS  tests/unit/unidades.test.js
+
+Test Suites: 5 failed, 1 passed, 6 total
+Tests:       37 failed, 11 passed, 48 total
+
+# Diagnóstico: global-setup.js crea catalogo_test y deja DATABASE_URL apuntando a ella. Con --runInBand
+# los archivos de prueba corren en el mismo proceso; setup-env.js vuelve a derivar el nombre agregando
+# "_test" y queda "catalogo_test_test". En la sesión de desarrollo no se vio porque se usaba
+# DATABASE_URL_TEST explícita. Se reprodujo localmente sin esa variable: 37 fallidas, 11 pasan (idéntico).

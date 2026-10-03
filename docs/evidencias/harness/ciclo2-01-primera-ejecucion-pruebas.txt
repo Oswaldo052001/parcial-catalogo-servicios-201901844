@@ -1,0 +1,22 @@
+# 2026-10-03T11:48:39-06:00 — npx jest --runInBand (primera ejecución de la batería P01–P12)
+FAIL tests/integracion/p09-p11-servicios.test.js
+      [error] error: column "codigo" does not exist
+  ● P10 Buscar y filtrar servicios › filtros por nivel 1, estado, clase, criticidad y tipo son coherentes
+    Expected: 3
+    Received: 4
+  ● P11 Asignar responsable de una sección distinta › rechaza asignar a una sección inactiva
+    expected 200 "OK", got 500 "Internal Server Error"
+FAIL tests/integracion/p01-p03-autenticacion.test.js
+  ● P03 Usuario de consulta intenta modificar datos › puede leer datos funcionales
+    Expected: 46
+    Received: 47
+FAIL tests/integracion/p04-p05-organizacion.test.js
+      [error] error: column "codigo" does not exist
+  ● P04 Crear una jerarquía y asignar un usuario › no permite asociar a un padre inactivo ni desactivar en silencio un padre con dependientes
+    expected 200 "OK", got 500 "Internal Server Error"
+FAIL tests/integracion/p06-p08-importacion.test.js
+  ● P06 Importar el archivo original › quedan 12 códigos de nivel 1 y 46 servicios de nivel 2, con incidencias registradas
+  ● P07 Repetir la importación › no duplica registros, no reporta cambios y deja una nueva traza
+Test Suites: 4 failed, 2 passed, 6 total
+Tests:       6 failed, 40 passed, 46 total
+exit=1

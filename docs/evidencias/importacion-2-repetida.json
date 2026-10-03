@@ -1,0 +1,58 @@
+{
+  "importacion_id": 2,
+  "archivo": "CatalogoServicios.xlsx",
+  "sha256": "de3b478a5faeeeaebce1aa7726e0e3321188a68e41bbb656e1d17b0c5b74dcf0",
+  "hoja": "Servicios Externos",
+  "filas": {
+    "zona_datos": "5-110",
+    "leidas": 106,
+    "principales_n2": 46,
+    "continuacion": 49,
+    "omitidas": 2,
+    "filas_omitidas": [
+      42,
+      67
+    ],
+    "vacias": 9,
+    "zona_opciones": "E112:H1000"
+  },
+  "catalogos_creados": {
+    "clase_servicio": 0,
+    "criticidad": 0,
+    "tipo_servicio": 0
+  },
+  "nivel1": {
+    "creados": 0,
+    "actualizados": 0,
+    "sin_cambios": 12
+  },
+  "nivel2": {
+    "creados": 0,
+    "actualizados": 0,
+    "sin_cambios": 46
+  },
+  "creados": 0,
+  "actualizados": 0,
+  "sin_cambios": 58,
+  "omitidos": 2,
+  "observados": 11,
+  "observaciones_por_tipo": {
+    "CONFLICTO_NOMBRE_N1": 1,
+    "CODIGO_NORMALIZADO": 3,
+    "ATRIBUTOS_INCOMPLETOS": 3,
+    "N1_POR_PREFIJO": 1,
+    "ESPACIOS_RECORTADOS": 1,
+    "FILA_SIN_CODIGO": 2
+  },
+  "controles": {
+    "n1_en_archivo": 12,
+    "n2_en_archivo": 46,
+    "esperado_n1": 12,
+    "esperado_n2": 46,
+    "ok": true
+  },
+  "totales_en_base": {
+    "n1": 12,
+    "n2": 46
+  }
+}

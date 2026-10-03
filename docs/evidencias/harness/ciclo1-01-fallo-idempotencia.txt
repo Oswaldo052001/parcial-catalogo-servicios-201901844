@@ -1,0 +1,7 @@
+# 2026-10-03T11:37:25-06:00 — node scripts/importar.js (segunda corrida, antes de la corrección)
+  "nivel1": {
+    "actualizados": 0,
+  "nivel2": {
+    "actualizados": 3,
+  "actualizados": 3,
+[importar] OK importación #3: creados=0 actualizados=3 sin_cambios=55 omitidos=2 observados=11

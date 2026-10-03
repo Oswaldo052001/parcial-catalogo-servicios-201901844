@@ -1,0 +1,4 @@
+# 2026-10-03T11:49:18-06:00 — npx jest --runInBand (después de corregir RETURNING en la cascada y el aislamiento de conteos)
+Test Suites: 6 passed, 6 total
+Tests:       46 passed, 46 total
+exit=0

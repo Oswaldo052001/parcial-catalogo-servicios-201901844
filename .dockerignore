@@ -1,0 +1,12 @@
+node_modules
+npm-debug.log
+.git
+.gitattributes
+.env
+.env.*
+!.env.example
+docs
+*.md
+coverage
+.vscode
+.idea

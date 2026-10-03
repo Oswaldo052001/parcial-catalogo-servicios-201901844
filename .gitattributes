@@ -1,0 +1,5 @@
+# Fines de línea LF para que los scripts funcionen dentro de los contenedores Linux aunque se clone en Windows.
+* text=auto eol=lf
+*.ps1 text eol=crlf
+*.xlsx binary
+*.png binary

@@ -1,0 +1,48 @@
+# Uso: copiar .env.example a .env y ejecutar  docker compose up --build -d
+name: catalogo-servicios
+
+services:
+  db:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-catalogo}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-catalogo_local}
+      POSTGRES_DB: ${POSTGRES_DB:-catalogo}
+    volumes:
+      - pgdata:/var/lib/postgresql/data   # persistencia: sobrevive a reinicios y a "docker compose down"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $${POSTGRES_USER} -d $${POSTGRES_DB}"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+    # Sin "ports": la base solo es accesible desde la red interna de compose.
+
+  app:
+    build: .
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy   # la app arranca cuando PostgreSQL ya acepta conexiones
+    environment:
+      POSTGRES_HOST: db
+      POSTGRES_PORT: "5432"
+      POSTGRES_USER: ${POSTGRES_USER:-catalogo}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-catalogo_local}
+      POSTGRES_DB: ${POSTGRES_DB:-catalogo}
+      PORT: "3000"
+      # Cuentas de evaluación: los valores por defecto son de DEMOSTRACIÓN (iguales a .env.example).
+      # Para usar otros, defínalos en .env.
+      AUTO_SETUP: ${AUTO_SETUP:-true}
+      SESSION_HOURS: ${SESSION_HOURS:-8}
+      ADMIN_USUARIO: ${ADMIN_USUARIO:-admin}
+      ADMIN_CORREO: ${ADMIN_CORREO:-admin@catalogo.local}
+      ADMIN_PASSWORD: ${ADMIN_PASSWORD:-Admin#2026}
+      CONSULTA_USUARIO: ${CONSULTA_USUARIO:-consulta}
+      CONSULTA_CORREO: ${CONSULTA_CORREO:-consulta@catalogo.local}
+      CONSULTA_PASSWORD: ${CONSULTA_PASSWORD:-Consulta#2026}
+    ports:
+      - "${APP_PORT:-8080}:3000"
+
+volumes:
+  pgdata:

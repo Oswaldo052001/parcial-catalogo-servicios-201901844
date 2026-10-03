@@ -1,0 +1,4 @@
+# 2026-10-03T14:10:35-06:00 — corrección en tests/db-test.js (no volver a agregar _test si el nombre ya termina así)
+# Reproducción local sin DATABASE_URL_TEST (misma configuración que el contenedor):
+antes:   Tests:       37 failed, 11 passed, 48 total
+después: Tests:       48 passed, 48 total

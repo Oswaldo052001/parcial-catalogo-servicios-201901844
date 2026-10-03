@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Catálogo de Servicios de TI</title>
+  <link rel="stylesheet" href="/app.css">
+</head>
+<body>
+  <div id="login" class="login hidden">
+    <form id="form-login" class="card login-card">
+      <h1>Catálogo de Servicios de TI</h1>
+      <p class="muted">Inicie sesión con su usuario o correo.</p>
+      <label>Usuario o correo<input name="usuario" autocomplete="username" required></label>
+      <label>Contraseña<input name="password" type="password" autocomplete="current-password" required></label>
+      <button type="submit">Ingresar</button>
+      <p id="login-error" class="error"></p>
+    </form>
+  </div>
+
+  <div id="app" class="hidden">
+    <header class="topbar">
+      <strong>Catálogo de Servicios de TI</strong>
+      <nav id="menu">
+        <a href="#/tablero">Tablero</a>
+        <a href="#/servicios">Servicios</a>
+        <a href="#/nivel1">Nivel 1</a>
+        <a href="#/catalogos">Catálogos</a>
+        <a href="#/organizacion">Organización</a>
+        <a href="#/usuarios">Usuarios</a>
+        <a href="#/asignaciones">Asignaciones</a>
+        <a href="#/importaciones">Importaciones</a>
+      </nav>
+      <span id="sesion" class="sesion"></span>
+      <button id="btn-salir" class="secundario">Salir</button>
+    </header>
+    <main id="vista"></main>
+  </div>
+
+  <div id="modal" class="modal hidden"><div class="modal-caja card" id="modal-caja"></div></div>
+  <div id="aviso" class="aviso hidden"></div>
+  <script src="/app.js"></script>
+</body>
+</html>

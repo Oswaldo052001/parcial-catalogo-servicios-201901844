@@ -1,0 +1,11 @@
+# Fecha: 2026-10-03T12:01:03-06:00 | Comando: node scripts/calidad.js
+OK    C1 Excel original sin modificaciones (SHA-256) — de3b478a5faeeeae
+OK    C2 Sintaxis válida en todos los .js — 35 archivos
+OK    C3 Controles del Excel sin base de datos (12 N1 / 46 N2) — 12/46, filas omitidas 42, 67
+OK    C4 Secretos fuera de Git (.env ignorado, sin .env versionado) — .env ignorado (git no disponible en este entorno)
+OK    C5 password_hash solo se lee en autenticación y scripts de cuentas — ok
+OK    C6 Migraciones numeradas y en orden — 001_esquema_inicial.sql, 002_vistas_jerarquia.sql, 003_integridad_adicional.sql
+OK    C7 Sin claves de proveedores de IA en el código — la aplicación no depende de servicios de IA
+
+[calidad] todos los controles pasaron
+exit=0
